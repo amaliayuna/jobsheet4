@@ -1,0 +1,76 @@
+
+//deklarasi variabel
+private double TinggiBadan;
+//constructor
+public manusia (double TB) 
+{
+TinggiBadan = TB;
+}
+//getter
+public double getTB()
+{
+return TinggiBadan;
+}
+//method HtgBBI
+public double HtgBBI()
+{
+return 0.0;
+}
+
+//constructor
+    public laki_laki (double TB)
+    {
+        super(TB);
+    }
+    //Method HtgBBI
+    public double HtgBBI()
+    {
+        return (super.getTB()-100)*0.9;
+    }
+
+
+//constructor
+    public perempuan (double TB)
+    {
+        super(TB);
+    }
+    //Method HtgBBI
+    public double HtgBBI()
+    {
+        return (super.getTB()-100)*0.8;
+    }
+
+public static void main(String[] args) throws Exception
+    {
+      BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+      //instance of class
+      manusia[] m = new manusia[3];
+      //deklarasi variabel
+      int x = 0;
+     
+      do
+      {
+          //input
+          System.out.println("User "+(x+1));
+          System.out.print("Masukkan Tinggi Badan Anda (cm) = ");
+          double t = Double.parseDouble(br.readLine());
+          System.out.print("Masukkan Jenis Kelamin Anda (L/P) = ");
+          String jk=br.readLine();
+         
+          //Proses + output
+          if (jk.toUpperCase().equals("L"))
+          {
+              m[x] = new laki_laki(t);
+              System.out.println("Berat badan ideal laki-laki ini adalah "+m[x].HtgBBI());
+              System.out.println();
+          }else
+          {
+              m[x] = new perempuan(t);
+              System.out.println("Berat badan ideal perempuan ini adalah "+m[x].HtgBBI());
+              System.out.println();
+          }
+         
+          x++;
+      }while (x<3);
+
+    }
